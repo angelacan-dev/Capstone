@@ -2,12 +2,19 @@ package com.meritamericabank.bank.models;
 
 import java.util.Arrays;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
+@Entity//data defined that stands on its own, annotate an object w/entity. also tells spring to connect with database and create table for these models
 public class AccountHolder {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	static int counter = 1;
 	private int accountId;
 	//private instance variables, if we're passing to the constructor it needs to exist in the object
@@ -16,7 +23,7 @@ public class AccountHolder {
 	private String middleName;
 	@NotBlank(message = "This field cannot be blank")
 	private String lastName;
-	//@NotBlank(message = "This field cannot be blank")
+	@NotNull(message = "This field cannot be blank")
 	private int ssn;
 	
 	private CheckingAccount[] checkingAccounts;

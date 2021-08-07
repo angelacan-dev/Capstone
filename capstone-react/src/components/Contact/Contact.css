@@ -1,0 +1,24 @@
+
+
+.contact {
+    /*flex-direction: column;
+    flex: 1 1 auto;*/
+    /*justify-content: space-evenly;*/
+    /* display: flex; //makes it fit the page horizontally */
+    background-color: white;
+    white-space: pre-wrap;
+    height: 100%;
+
+  }
+
+
+.contact-form {
+    /* //display: flex; */
+    /* //flex: 1 1 auto; */
+    background-color: white;
+    white-space: pre-wrap;
+    position: absolute;
+    margin: 200px;
+    left: 5%
+
+}

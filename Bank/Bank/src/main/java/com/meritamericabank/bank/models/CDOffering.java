@@ -1,5 +1,10 @@
 package com.meritamericabank.bank.models;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +17,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 
+@Entity
 public class CDOffering {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	//@NotBlank(message = "Term is mandatory")
 	@Range(min = 1, message = "Term cannot be less than 1" )

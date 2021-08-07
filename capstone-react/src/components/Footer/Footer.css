@@ -1,0 +1,19 @@
+.footer {
+    display: flex;
+    height: 100px;
+    background-color: green;
+    position:relative;
+  }
+
+.footer-items {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.footer-fdic {
+  width: 100px;
+  background-color: gray;
+  height: 100%;
+}

@@ -3,15 +3,19 @@ package com.meritamericabank.bank.models;
 import java.util.Arrays;
 import java.util.Random;
 
+import javax.persistence.Entity;
+import javax.persistence.MappedSuperclass;
+
 import com.meritamericabank.bank.models.AccountHolder;
 
+@Entity
 public class MeritBank {
 	
 	private static CDOffering[] cdOfferings = new CDOffering[0];
 	private static AccountHolder[] accountHolders = new AccountHolder[0];
 	private static long accountNumber = 0;
 	
-	public static double getTotalBalances() { //meritbank wants to get total balances to get total balances of all account holders
+	public static double getTotalBalances() { //meritbank wants to get total balances of all account holders
 		double total = 0;
 		for(AccountHolder a: accountHolders) {
 			total += a.getCombinedBalance();

@@ -1,5 +1,5 @@
 import { date } from 'language-tags';
-import React from 'react';
+import React, {useState} from 'react';
 
 const api = {
   key: "f3d46159a2b700c4c784048fd6bd2a2d",
@@ -7,6 +7,22 @@ const api = {
 }
 
 function App() {
+  const [query, setQuery] = useState('');
+  const [weather, setWeather] = useState({});
+
+  //if event is equal to 'enter' fetch api to setweather. response in json and setweather equal to result
+  const search = evt => {
+    if (evt.key === "Enter") { //fetch api is implemented
+      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`) //must use back ticks instead of quote string
+      .then(res => res.json())
+      .then(result => {
+        setWeather(result);
+        setQuery('');
+        console.log(result);
+    });
+  }
+  }
+
 
   const dateBuilder = (d) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August",
@@ -19,29 +35,40 @@ function App() {
   let month = months[d.getMonth()];  //will return number between 0-11 which will give us our month
   let year = d.getFullYear(); //will give us 2021 for example
   
-  return '${day} ${date} ${month} ${year}' //todo: fix this
+  return `${day} ${date} ${month} ${year}` 
   }
 
   return (
-    <div className="app">
+    //here we are checking for the type of weather and app will display warm or cold pic depending
+    <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 16)
+        ? 'app warm' : 'app'): 'app'}>
       <main>
         <div className = "search-box">
           <input 
           type = "text"
           className= "search-bar"
-          placeholder = "Search..."
+          placeholder= "Search..."
+          onChange={e => setQuery(e.target.value)}
+          value={query} //need to bind value equal to the query
+          onKeyPress={search}
           />
         </div>
+        {/* //if type of weather is not equal to undefined */}
+        {(typeof weather.main !== "undefined") ? (
+        <div>
         <div className = "location-box">
-          <div className = "location" > New York City,US</div>
+          <div className = "location" > {weather.name}, {weather.sys.country}</div>
           <div className = "date">{dateBuilder(new Date())}</div>
         </div>
         <div className = "weather-box">
           <div className = "temp">
-            15°C
+            {Math.round(weather.main.temp)}°C
           </div>
-          <div className="weather">Sunny</div>
+          {/* //tells us if sunny, clouds, etc */}
+          <div className="weather">{weather.weather[0].main}</div>
           </div>
+        </div>
+        ) : ('')}
       </main>
     </div>
   );

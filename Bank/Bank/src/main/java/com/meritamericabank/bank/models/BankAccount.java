@@ -5,7 +5,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Date.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+ 
+@Entity
 public class BankAccount {
+	@Id //marks a field as a primary key field. you can't have a row of data in a relational database without a primary key
+	@GeneratedValue(strategy=GenerationType.AUTO) //specifies that the primary key is automatically allocated by objectDB
 	static SimpleDateFormat SDF = new SimpleDateFormat ("MM/dd/yyyy");
 	protected double balance; //protected allows us to view these properties in the children classes
 	protected double interestRate;

@@ -2,8 +2,15 @@ package com.meritamericabank.bank.models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 import com.meritamericabank.bank.models.BankAccount;
 
+@Table(name = "CHECKINGACCOUNT")
+@Entity
+@OneToMany(cascade = CascadeType.ALL)
 public class CheckingAccount extends BankAccount {
 		
 		public CheckingAccount() {

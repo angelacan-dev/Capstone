@@ -2,8 +2,11 @@ package com.meritamericabank.bank.models;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 import com.meritamericabank.bank.models.BankAccount;
 
+@Entity
 public class SavingsAccount extends BankAccount {
 	
 	public SavingsAccount() {

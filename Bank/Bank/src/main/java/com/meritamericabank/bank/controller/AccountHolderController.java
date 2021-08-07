@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.meritamericabank.bank.exceptions.NoSuchResourceFoundException;
 import com.meritamericabank.bank.models.AccountHolder;
 import com.meritamericabank.bank.models.CDAccount;
 import com.meritamericabank.bank.models.CheckingAccount;
@@ -50,7 +51,10 @@ public class AccountHolderController {
 
 	@GetMapping("/AccountHolders/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public AccountHolder getAccountHolder(@PathVariable int id) {
+	public AccountHolder getAccountHolder(@PathVariable int id) throws NoSuchResourceFoundException {
+		if (id > holders.size()-1) {
+			throw new NoSuchResourceFoundException("Invalid id");
+		}
 		return holders.get(id);
 	}
 

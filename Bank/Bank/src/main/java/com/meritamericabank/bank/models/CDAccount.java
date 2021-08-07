@@ -2,8 +2,14 @@ package com.meritamericabank.bank.models;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import com.meritamericabank.bank.models.BankAccount;
 
+@Entity
 public class CDAccount extends BankAccount{
 	
 	public CDAccount(int term, double balance) {
