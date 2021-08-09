@@ -12,7 +12,7 @@ function Footer() {
                 <a href="/rates" className="footer-item">Rates</a>
             </section>
             <section className= "footer-fdic">
-                <a href= "/footer-fdic" className="footer-fdic">Member of FDIC</a>
+                Member of FDIC
             </section>
          </section>
     )
