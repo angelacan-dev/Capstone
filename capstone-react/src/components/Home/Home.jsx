@@ -8,6 +8,7 @@ function Home () {
     //our section with different navigating items
     return (
         <section className = "navbar"> 
+            <Link to = "/home">Home</Link>
             <Link to = "/logout">Logout</Link>
             <Link to = "/closeaccount">Close Account</Link>
             <Link to = "/transactions">Transactions</Link>

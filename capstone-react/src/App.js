@@ -6,6 +6,7 @@ import Contact from './components/Contact';
 import About from './components/About';
 import Privacy from './components/Privacy';
 import Terms from './components/Terms';
+import Home from './components/Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -19,6 +20,9 @@ function App() {
         <Route exact path="/">
           <Content />
         </Route>
+        <Route exact path="/home">
+          <Home />
+        </Route>
         <Route exact path="/contact">
           <Contact />
         </Route>
@@ -30,7 +34,7 @@ function App() {
         </Route>
         <Route exact path="/terms">
           <Terms />
-        </Route>
+        </Route>  
         <Footer />
       </div>
     </Router>

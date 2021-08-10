@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Redirect } from "react-router-dom";// const Login = (props: {setFirstName: (firstName: string) => void }) => {
+import { Redirect, useHistory } from "react-router-dom";// const Login = (props: {setFirstName: (firstName: string) => void }) => {
 
 const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
     const [token, setToken] = useState(null);    // const submit = async (e: SyntheticEvent) => {
+    const history = useHistory();    
     const submit = async (e) => {
         e.preventDefault();
         const requestOptions = {
@@ -42,15 +43,28 @@ const Login = (props) => {
             mode: 'cors',
             headers: h,
         };
-        const a = await fetch(new Request(url, requestOptions1))
-            .then(response => response.json())
-            .then(content => {
+        const response2 = await fetch(new Request(url, requestOptions1))
+            const content2 = await response2.json();
+
+            console.log(content2[0]);
+
+        history.push('/home')
+
+            // .then(response => response.json())
+            /* .then(content => {
                 console.log(content[0]);
-            })
-            .catch(err => {
+                
+                setRedirect(true);
+            }) */
+
+            /* .catch(err => {
                 console.error(err.message);
-            })            // setFirstName(content.firstName);        // setRedirect(true);    }    // if (redirect) {
-        //     return <Redirect to='/' />
+            })        */     // setFirstName(content.firstName);        // setRedirect(true);    }    // if (redirect) {
+            /* if (redirect ) {
+                return <Redirect to='/' /> 
+            }
+        */
+            //     return <Redirect to='/' />
     }
     return (
         < form onSubmit={submit} >
