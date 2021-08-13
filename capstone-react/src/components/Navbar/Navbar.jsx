@@ -8,7 +8,7 @@ function Navbar () {
     //our section with different navigating items
     return (
         <section className = "navbar"> 
-            {/* <Link to = "/"></Link> */}
+            <Link to = "/openaccount">Open Account</Link>
             <Link to = "/contact">Contact Us</Link>
             <Link to = "/about">About Us</Link>
         </section>

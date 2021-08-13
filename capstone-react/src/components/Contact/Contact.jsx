@@ -1,10 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import './Contact.css'; //imports the styling for contact page
 
 
 function Contact() {
-const submit = () => {
+
+const [example, setExample] = useState()
+
+const submit = (event) => {
     alert("Message submitted")
+    event.preventDefault()
+    localStorage.setItem("example", JSON.stringify({name: example}))
+
+    const readString = JSON.parse(localStorage.getItem("example"))
+    console.log(readString);
 }
     return (
             <section className="contact">
@@ -18,7 +26,9 @@ const submit = () => {
                 <h1>Get In Touch</h1>
 
                 <label>Name</label>
-                <input placeholder="name" />
+                <input placeholder="name"
+                value = {example}
+                onChange = {(e) => setExample(e.target.value)} />
 
                 <label>Email</label>
                 <input placeholder="email" />
