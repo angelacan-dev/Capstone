@@ -12,7 +12,7 @@ const submit = () => {
             <form className="open-form" onSubmit={submit}>
 
                 <label>What type of account would you like to open?</label>
-                <input placeholder="name" />
+                <input placeholder="" />
 
                 <label>If opening IRA choose from</label>
                 <input placeholder="email" />

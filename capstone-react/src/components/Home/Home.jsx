@@ -11,6 +11,7 @@ function Home () {
         <section className = "navbar"> 
             <Link to = "/home">Home</Link>
             <Link to = "/transactions">Transactions</Link>
+            <Link to = "/history">History</Link>
             <Link to = "/closeaccount">Close Account</Link>
             <Link to = "/updateprofile">Update Profile</Link>
             <Link to = "/logout">Logout</Link>

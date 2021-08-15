@@ -9,7 +9,11 @@ import Terms from './components/Terms';
 import Home from './components/Home';
 import Update from './components/Update';
 import Rates from './components/Rates';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Open from './components/Open';
+import Close from './components/Close';
+import Transactions from './components/Transactions';
+import History from './components/History';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 
@@ -24,6 +28,9 @@ function App() {
         </Route>
         <Route exact path="/home">
           <Home />
+        </Route>
+        <Route exact path="/openaccount">
+          <Open />
         </Route>
         <Route exact path="/contact">
           <Contact />
@@ -40,8 +47,21 @@ function App() {
         <Route exact path="/rates">
           <Rates />
         </Route>
+        <Route exact path="/transactions">
+          <Home/>
+          <Transactions/>
+        </Route>
+        <Route exact path="/history">
+          <Home/>
+          <History/>
+        </Route>
+        <Route exact path="/closeaccount">
+          <Home/>
+          <Close/>
+        </Route>
         <Route exact path="/updateprofile">
-          <Update />
+          <Home/>
+          <Update/>
         </Route>
         <Route exact path="/logout">
           <Content />

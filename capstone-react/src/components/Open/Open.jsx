@@ -1,35 +1,43 @@
-import React, { Fragment } from 'react';
-import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import './Open.css'; //imports the styling for openaccount page
+import React, {useState} from 'react';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
+export default function Open() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const [buttonLabel, setButtonLabel] = useState("Type of Account");
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = (event, index) => {
+      console.log(index);
+      setButtonLabel(index);
+    setAnchorEl(null);
+  };
 
 
-function Open() {
-const submit = () => {
-    alert("Account has been created")
+
+  return (
+    <div>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+        {buttonLabel}
+      </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={(event)=>handleClose(event, "Personal Checking")}>Personal Checking</MenuItem>
+        <MenuItem onClick={(event)=>handleClose(event, "Personal Savings")}>Personal Savings</MenuItem>
+        <MenuItem onClick={(event)=>handleClose(event, "Business Checking")}>Business Checking</MenuItem>
+        <MenuItem onClick={(event)=>handleClose(event, "IRA")}>IRA</MenuItem>
+        <MenuItem onClick={(event)=>handleClose(event, "CD")}>CD</MenuItem>
+      </Menu>
+    </div>
+  );
 }
-    return (
-
-            <section className="open">
-            <form className="open-form" onSubmit={submit}>
-
-                <label>What type of account would you like to open?</label>
-                <input placeholder="name" />
-
-                <label>If opening IRA choose from</label>
-                <input placeholder="email" />
-
-                
-                <label>If opening CD choose from</label>
-                <textarea placeholder="Message"></textarea>
-
-                <label>Deposit amount to open account</label>
-                <input placeholder=" " />
-
-                <button type="submit">Submit</button>
-                <button type= "cancel">Cancel</button>
-            </form>
-            </section>
-    )
-}
-
-export default Open;
